@@ -11,7 +11,7 @@ class RMHC
 {
 public:
 	std::string rep, target;
-	const int SHOW_EVERY = 100000, MIN_ASCII = 32, MAX_ASCII = 127;
+	const int SHOW_EVERY = 100, MIN_ASCII = 32, MAX_ASCII = 127;
 
 	RMHC(std::string tar)
 	{
@@ -68,7 +68,7 @@ public:
 		int index = rand() % rep.length();
 		int currentChar = rep[index];
 
-		if (currentChar == MIN_ASCII || (float)(rand() / RAND_MAX) > 0.5f)
+		if (currentChar == MIN_ASCII || (rand() % 2))
 		{
 			++currentChar;
 			currentChar = std::min(currentChar, MAX_ASCII);
@@ -98,7 +98,7 @@ public:
 
 int main()
 {
-	RMHC rmhc("Hello World");
+	RMHC rmhc("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur blandit risus id laoreet ultricies. Maecenas id finibus ante. In congue vulputate eros, et laoreet orci vulputate non. Interdum et malesuada fames ac ante ipsum primis in faucibus. Etiam commodo vestibulum neque, at egestas justo suscipit eu. Interdum et malesuada fames ac ante ipsum primis in faucibus. Etiam ut ipsum ex. Pellentesque finibus ligula nec metus cursus cursus. Curabitur finibus finibus tortor, non auctor lorem luctus eget. Donec vitae est porttitor ex vehicula eleifend.");
 	clock_t begin = clock();
 	rmhc.run();
 	clock_t end = clock();
